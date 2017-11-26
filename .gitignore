@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/RifleRange/bin
+/RifleRange/Content/Blueimp
+/RifleRange/Content/dhtmlxeditor/codebase
+/RifleRange/Content/dhtmlxTree/codebase
+/RifleRange/Content/kendoUI
+/RifleRange/obj
+/RifleRange/RifleRange.csproj.user
+/RifleRange/Files
+/RifleRange/Scripts
+/packages
+/.vs
