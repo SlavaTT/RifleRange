@@ -1,0 +1,82 @@
+﻿@model RifleRange.Models.NewsModel
+
+@section ValidationScripts
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js"></script>
+}
+@section HeadScripts
+{
+    <link rel="stylesheet" type="text/css" href="~/Content/dhtmlxeditor/codebase/dhtmlxeditor.css">
+    <script src="~/Content/dhtmlxeditor/codebase/dhtmlxeditor.js"></script>
+    <script type="text/javascript">
+        var BodyEditor = null;
+
+        function OnDocumentReady() {
+            BodyEditor = new dhtmlXEditor({
+                parent: "BodyEditor",
+                toolbar: true, // force dhtmlxToolbar using
+                iconsPath: "/Content/dhtmlxeditor/codebase/imgs/" // path for toolbar icons
+            });
+        }
+        function OnSubmitClick()
+        {
+            var BodyContent = BodyEditor.getContent();
+
+            if (BodyContent.length == 0) {
+                window.alert("Введите текст новости!");
+                return false;
+            }
+            var EncodedContent = encodeURIComponent(BodyContent);
+            $("#Body").val(EncodedContent);
+
+            return true;
+        }
+    </script>
+}
+@using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-horizontal">
+        <h4>Добавить Новость</h4>
+        <hr />
+        <div class="form-group">
+            <span class="control-label col-md-2">@Html.DisplayNameFor(model => model.Title)</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">@Html.DisplayNameFor(model => model.Body)</span>
+            <div class="col-md-10">
+                <div id="BodyEditor" style="width:100%; height:300px; border:#909090 1px solid;"></div>
+                <input type="hidden" id="Body" name="Body"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">Файл</span>
+            <div class="col-md-10">
+                <input type="file" id="File" name="File" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" onclick="return OnSubmitClick();" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Вернуться", "Index")
+</div>
+@section BottomScripts
+{
+    <script type="text/javascript">
+        $(document).ready(OnDocumentReady);
+    </script>
+}

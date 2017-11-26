@@ -1,0 +1,17 @@
+﻿@model RifleRange.Models.ForumThread
+
+<h3>Вы действительно хотите удалить это сообщение ?</h3>
+<div>
+    <h4>Удалить сообщение</h4>
+    <hr />
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default"
+                   formaction="@Url.Action("DeleteIt", "Forum", new RouteValueDictionary(new { id = Model.ForumThreadId }))" /> <br />
+            @Html.ActionLink("Вернуться", "Index")
+        </div>
+    }
+</div>

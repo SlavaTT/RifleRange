@@ -1,0 +1,64 @@
+﻿@using RifleRange.Models
+@model ForumThread[]
+
+@{
+    ViewBag.Title = "Форум";
+}
+
+<h2>@ViewData["ForumTitle"].ToString()</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <br />
+    <a href="@Url.Action("Create")">Новая тема</a>
+    <br />
+}
+else
+{
+    <br />
+    <a href="@Url.Action("Register", "Account")">Регистрация</a>
+    <br />
+}
+
+
+<br />
+
+@if (Model.Length > 0)
+{
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", "Forum", new { id = item.ForumThreadId })">@item.Title</a>
+                    <br />                    
+                    @Html.DisplayFor(modelItem => item.CreatedByName),
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                    @if (item.LastUpdate != null)
+                    {
+                        <br />
+                        <span>Редактировалось:</span>@Html.DisplayFor(modelItem => item.LastUpdate)
+                    }
+                </td>
+                @if (User.Identity.IsAuthenticated &&
+                    item.CreatedBy == ((RifleRange.DAL.rrUser)Session["User"]).UserId)
+                {
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.ForumThreadId })">Редактировать</a>&nbsp;|
+                        <a href="@Url.Action("Delete", new { id = item.ForumThreadId })">Удалить</a>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <tr>
+        <th>
+            <br />
+            Нет тем.
+        </th>
+    </tr>
+}
+

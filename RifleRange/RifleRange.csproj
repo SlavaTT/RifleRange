@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F3C5A9F-B8D9-4532-B35E-1EEBC601D4C0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RifleRange</RootNamespace>
+    <AssemblyName>RifleRange</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Blueimp\css\blueimp-gallery-indicator.css" />
+    <Content Include="Content\Blueimp\css\blueimp-gallery-video.css" />
+    <Content Include="Content\Blueimp\css\blueimp-gallery.css" />
+    <Content Include="Content\Blueimp\css\blueimp-gallery.min.css" />
+    <Content Include="Content\Blueimp\img\error.png" />
+    <Content Include="Content\Blueimp\img\error.svg" />
+    <Content Include="Content\Blueimp\img\loading.gif" />
+    <Content Include="Content\Blueimp\img\play-pause.png" />
+    <Content Include="Content\Blueimp\img\play-pause.svg" />
+    <Content Include="Content\Blueimp\img\video-play.png" />
+    <Content Include="Content\Blueimp\img\video-play.svg" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery-fullscreen.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery-indicator.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery-video.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery-vimeo.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery-youtube.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery.js" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery.min.js" />
+    <Content Include="Content\Blueimp\js\blueimp-helper.js" />
+    <Content Include="Content\Blueimp\js\jquery.blueimp-gallery.js" />
+    <Content Include="Content\Blueimp\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\dhtmlxeditor\codebase\dhtmlxeditor.css" />
+    <Content Include="Content\dhtmlxeditor\codebase\dhtmlxeditor.js" />
+    <Content Include="Content\dhtmlxeditor\codebase\dhtmlxeditor_deprecated.js" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\css\font-awesome.css" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\css\font-awesome.min.css" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\font-awesome-license.txt" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\LICENSE-2.0.txt" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\roboto.css" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\align_center.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\align_justify.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\align_left.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\align_right.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\bold.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\buttons.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\clear.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\h1.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\h2.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\h3.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\h4.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\indent_dec.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\indent_inc.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\italic.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\list_bullet.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\list_number.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\script_sub.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\script_super.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\strike.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxeditor_material\underline.png" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxtoolbar_material\dhxtoolbar_arrow.gif" />
+    <Content Include="Content\dhtmlxeditor\codebase\imgs\dhxtoolbar_material\dhxtoolbar_arrow_dis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\dhtmlxcommon.js" />
+    <Content Include="Content\dhtmlxTree\codebase\dhtmlxtree.css" />
+    <Content Include="Content\dhtmlxTree\codebase\dhtmlxtree.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_attrs.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_dragin.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_ed.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_er.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_json.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_kn.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_lf.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_li.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_rl.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_sb.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_srnd.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_start.js" />
+    <Content Include="Content\dhtmlxTree\codebase\ext\dhtmlxtree_xw.js" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\but_cut.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\book.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\book_titel.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\but_cut.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\close2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconSafe.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line1_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\line4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\minus5_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\plus5_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluebooks\tombs.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconCheckAll_2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconFlag.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconGraph.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconSound.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconTexts.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconWrite1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\iconWrite2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_bluefolders\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\tombs.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_books\tombs_open.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconFlag.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconGraph.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconSound.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconTexts.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconWrite1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\iconWrite2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_dhx_skyblue\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconFlag.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconGraph.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconSound.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconTexts.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconWrite1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\iconWrite2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\safe_close.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_scbrblue\safe_open.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconFlag.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconGraph.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconSound.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconTexts.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconWrite1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\iconWrite2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_vista\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconChecked.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconFlag.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconGraph.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconSound.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconTexts.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconWrite1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\iconWrite2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\leaves.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_winstyle\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\blank.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\books_close.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\books_open.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconText.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\leaf2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\leaf3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\leaf_2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\tombs.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\csh_yellowbooks\tombs_open.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\folderClosed.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\folderOpen.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\iconCheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\iconCheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\iconCheckGray.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\iconUncheckAll.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\iconUncheckDis.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\leaf.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line1_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\line4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\lock.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus5_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\minus_ar.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus1.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus2.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus2_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus3.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus3_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus4.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus4_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus5.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus5_rtl.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\plus_ar.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\radio_off.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\radio_on.gif" />
+    <Content Include="Content\dhtmlxTree\codebase\imgs\sky_blue_sel_tree.png" />
+    <Content Include="Content\images\16b69d2240ed.jpg" />
+    <Content Include="Content\images\20150520_094823.jpg" />
+    <Content Include="Content\images\20151015_143951.jpg" />
+    <Content Include="Content\images\20161127_093020.jpg" />
+    <Content Include="Content\images\20161127_093351.jpg" />
+    <Content Include="Content\images\20161127_093359.jpg" />
+    <Content Include="Content\images\20161127_121354.jpg" />
+    <Content Include="Content\images\20161127_121712.jpg" />
+    <Content Include="Content\images\20161127_121728.jpg" />
+    <Content Include="Content\images\20161127_121749.jpg" />
+    <Content Include="Content\images\481ad82be7dd.jpg" />
+    <Content Include="Content\images\P1040504.JPG" />
+    <Content Include="Content\images\P1040508.JPG" />
+    <Content Include="Content\images\P1040509.JPG" />
+    <Content Include="Content\images\P1040512.JPG" />
+    <Content Include="Content\images\P1040513.JPG" />
+    <Content Include="Content\images\P1050330.JPG" />
+    <Content Include="Content\images\P1050331.JPG" />
+    <Content Include="Content\js\Helper.js" />
+    <Content Include="Content\kendoUI\js\jszip.min.js" />
+    <Content Include="Content\kendoUI\js\kendo.all.min.js" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\editor.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\loading.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\markers.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\markers_2x.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\sprite.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_kpi.png" />
+    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\kendoUI\styles\images\back.png" />
+    <Content Include="Content\kendoUI\styles\images\kendoui.svg" />
+    <Content Include="Content\kendoUI\styles\images\wp8_icons.png" />
+    <Content Include="Content\kendoUI\styles\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendoUI\styles\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendoUI\styles\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.core.min.css" />
+    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\kendoUI\styles\kendo.common.min.css" />
+    <Content Include="Content\kendoUI\styles\kendo.rtl.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\kendoUI\js\kendo.all.min.js.map" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.woff" />
+    <Content Include="Content\kendoUI\styles\images\kendoui.ttf" />
+    <Content Include="Content\kendoUI\styles\images\kendoui.woff" />
+    <Content Include="Content\kendoUI\styles\kendo.bootstrap.min.css.map" />
+    <Content Include="Content\kendoUI\styles\kendo.bootstrap.mobile.min.css.map" />
+    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.core.min.css.map" />
+    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.min.css.map" />
+    <Content Include="Content\kendoUI\styles\kendo.common.min.css.map" />
+    <Content Include="Content\kendoUI\styles\kendo.rtl.min.css.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Image\Photo.cshtml" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BaseController.cs" />
+    <Compile Include="App_Start\ModelFactory.cs" />
+    <Compile Include="App_Start\WebAPIConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\API\ForumController.cs" />
+    <Compile Include="DAL\Forum.cs" />
+    <Compile Include="DAL\ForumThread.cs" />
+    <Compile Include="DAL\Image.cs" />
+    <Compile Include="DAL\PhotoAlbum.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Models\Api\ForumThread.cs" />
+    <Compile Include="Models\ForumThread.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="DAL\News.cs" />
+    <Compile Include="DAL\RecordMapper.cs" />
+    <Compile Include="DAL\SQL.cs" />
+    <Compile Include="DAL\SqlField.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\animated.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\bordered-pulled.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\core.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\fixed-width.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\font-awesome.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\icons.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\larger.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\list.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\mixins.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\path.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\rotated-flipped.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\stacked.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\less\variables.less" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\font-awesome.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_animated.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_core.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_icons.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_larger.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_list.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_mixins.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_path.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_stacked.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_awesome\scss\_variables.scss" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\-2n2p-_Y08sg57CNWQfKNvesZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\CWB0XYA8bzo0kSThX0UTuA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\ek4gzZ-GeXAPcSbHtCeQI_esZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\mErvLBYg_cXG3rLvUsKT_fesZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\NdF9MtnOpLzo-noMoG0miPesZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\RxZJdnzeo3R5zSexge8UUVtXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="Content\dhtmlxeditor\codebase\fonts\font_roboto\u0TOpm082MNkS5K0Q4rhqvesZW2xOQ-xsNqO47m55DA.woff2" />
+    <Content Include="Content\Blueimp\css\blueimp-gallery.min.css.map" />
+    <Content Include="Content\Blueimp\js\blueimp-gallery.min.js.map" />
+    <Content Include="Content\Blueimp\js\jquery.blueimp-gallery.min.js.map" />
+    <None Include="Properties\PublishProfiles\UH.pubxml" />
+    <Content Include="Views\Home\Discipline.cshtml" />
+    <Content Include="Views\Service\Restaurant.cshtml" />
+    <Content Include="Views\Service\Dock.cshtml" />
+    <Content Include="Views\Service\Horse.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ProfileEdit.cshtml" />
+    <Content Include="Views\News\EditIndex.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\Image\Create.cshtml" />
+    <Content Include="Views\Image\EditAlbum.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Forum\Create.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Forum\Edit.cshtml" />
+    <Content Include="Views\Forum\Delete.cshtml" />
+    <Content Include="Views\Forum\Details.cshtml" />
+    <Content Include="Views\Forum\DetailsTree.cshtml" />
+    <None Include="Views\Shared\ShowAlbum.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Files\Image\Thumb\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62193</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62193/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:62193/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

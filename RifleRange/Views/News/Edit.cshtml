@@ -1,0 +1,99 @@
+﻿@model RifleRange.Models.NewsModel
+
+@section ValidationScripts
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js"></script>
+}
+
+@section HeadScripts
+{
+    <link rel="stylesheet" type="text/css" href="~/Content/dhtmlxeditor/codebase/dhtmlxeditor.css">
+    <script src="~/Content/dhtmlxeditor/codebase/dhtmlxeditor.js"></script>
+    <script type="text/javascript">
+        var BodyEditor = null;
+
+        function OnDocumentReady() {
+            BodyEditor = new dhtmlXEditor({
+                parent: "BodyEditor",
+                toolbar: true, // force dhtmlxToolbar using
+                iconsPath: "/Content/dhtmlxeditor/codebase/imgs/" // path for toolbar icons
+            });
+
+            var NewsHTML = $("#Body").val();
+            NewsHTML = decodeURIComponent(NewsHTML);
+            BodyEditor.setContent(NewsHTML);
+        }
+        function OnSubmitClick()
+        {
+            var BodyContent = BodyEditor.getContent();
+
+            if (BodyContent.length == 0) {
+                window.alert("Введите текст новости!");
+                return false;
+            }
+            var EncodedContent = encodeURIComponent(BodyContent);
+            $("#Body").val(EncodedContent);
+
+            return true;
+        }
+    </script>
+}
+@using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Редактировать новостъ</h4>
+        <hr />
+        <div class="form-group">
+            <span class="control-label col-md-2">@Html.DisplayNameFor(model => model.Title)</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="control-label col-md-2">@Html.DisplayNameFor(model => model.Body)</span>
+            <div class="col-md-10">
+                <div id="BodyEditor" style="width:100%; height:300px; border:#909090 1px solid;"></div>
+                @Html.HiddenFor(model => model.Body)
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="control-label col-md-2">@Html.DisplayNameFor(model => model.FileName)</span>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => Model.File, new { @type = "file" })
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.FileName))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2">&nbsp;</span>
+                <div class="col-md-10">
+                    <a href="@string.Format("/Files/{0}", Model.FileName)" target="_blank">
+                        @Helper.GetFileNameWithOutGUID(Model.FileName)
+                    </a>
+                    &nbsp;
+                    @Html.CheckBoxFor(model => Model.DeleteFile)
+                    @Html.LabelFor(model => Model.DeleteFile)
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" onclick="return OnSubmitClick();" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Вернуться", "Index")
+</div>
+@section BottomScripts
+{
+    <script type="text/javascript">
+        $(document).ready(OnDocumentReady);
+    </script>
+}

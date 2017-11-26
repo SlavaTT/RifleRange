@@ -1,0 +1,33 @@
+﻿@using RifleRange.Models
+@model ImageModel[]
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+<h3>Фотогалерея - @ViewBag.Album.Title</h3>
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("EditAlbum", "Image", new { id = ViewBag.Album.AlbumId })">Редактировать</a>
+}
+
+@if (Model.Length > 0)
+{
+    <div id="links">
+        @foreach (ImageModel Image in Model)
+        {
+            <a href="~/Files/Image/@Image.FileName" data-gallery>
+                <img src="~/Files/Image/Thumb/@Image.FileName" alt="@Image.Description" />
+            </a>
+        }
+    </div>
+}
+else
+{
+    <div>Нет изображений</div>
+}

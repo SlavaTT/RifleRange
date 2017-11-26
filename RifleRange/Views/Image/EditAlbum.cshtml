@@ -1,0 +1,52 @@
+﻿@using RifleRange.Models
+@using RifleRange.DAL
+@model ImageModel[]
+
+@{var Album = (rrPhotoAlbum)ViewBag.Album;}
+
+<h3>Фотогалерея - @Album.Title</h3>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("Create", "Image", new { id = Album.AlbumId })">Добавить картинку</a>
+    <br />
+    <br />
+}
+
+@if (Model.Length > 0)
+{
+    <table>
+            @for (var i = 0; i < Model.Length; i++)
+            {
+                 <tr>
+                    @{
+                        var Image = Model[i];
+                    }
+                    <td>
+                        <a href="~/Files/Image/@Image.FileName" target="_blank">
+                            <img src="~/Files/Image/Thumb/@Image.FileName" alt="@Image.Description" />
+                        </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <br />
+                            <a href="@Url.Action("Delete", "Image", new { id = @Image.ImageId })"
+                               onclick="return OnImageDelete();">Удалить</a>
+                        }
+                    </td>
+                 </tr>
+            }
+    </table>
+}
+else
+{
+    <div>Нет изображений</div>
+}
+
+@section BottomScripts
+{
+    <script type="text/javascript">
+        function OnImageDelete() {
+            return window.confirm("Удалить картинку ?");
+        }
+    </script>
+}

@@ -1,0 +1,24 @@
+﻿@model RifleRange.Models.NewsModel
+@using RifleRange
+
+    <div>
+        <h4>@Model.Title</h4>
+        <hr />
+        <dl>   
+            <dt>
+                @Html.Raw(Uri.UnescapeDataString(Model.Body))
+            </dt>
+            @if (!string.IsNullOrEmpty(Model.FileName))
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => Model.FileName):&nbsp;
+                    <a href="@string.Format("/Files/{0}", Model.FileName)" target="_blank">
+                        @Helper.GetFileNameWithOutGUID(Model.FileName)
+                    </a>
+                </dt>
+            }
+        </dl>
+    </div>
+    <p>
+        <a href="@Url.Action("Index", "News")">Вернуться</a>
+    </p>

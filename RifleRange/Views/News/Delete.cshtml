@@ -1,0 +1,17 @@
+﻿@model RifleRange.Models.NewsModel
+
+    <h3>Вы действительно хотите удалить эту новость ?</h3>
+    <div>
+        <h4>Удалить новость</h4>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Удалить" class="btn btn-default" 
+                    formaction="@Url.Action("DeleteIt", "News", new RouteValueDictionary(new { id = Model.NewsId }))" /> <br />
+                @Html.ActionLink("Вернуться", "Index")
+            </div>
+        }
+    </div>

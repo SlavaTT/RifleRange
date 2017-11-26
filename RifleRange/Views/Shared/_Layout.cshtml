@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="B1446I4Mq9rZva_rd3crgbBpfLidmKe9EcHQz0D5hKk" />
+    <meta charset="utf-8" name="keywords" 
+          content="Тир Днепр, Стрельба Днепр, Стендовая стрельба Днепр, Пулевая стрельба Днепр, СК Беркут" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>СК Беркут - cтендовая и пулевая стрельба в Днепре</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/site.css?v=1.1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    @RenderSection("ValidationScripts", required: false)
+    @RenderSection("HeadScripts", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Тир</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Дисциплины", "Discipline", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Услуги</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Action("Restaurant", "Service")">Ресторан</a></li>
+                            <li><a href="@Url.Action("Dock", "Service")">Причал</a></li>
+                            <li><a href="@Url.Action("Horse", "Service")">Прогулки верхом</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Contact", "Home")">Контакты</a></li>
+                    <li><a href="@Url.Action("Index", "News")">Новости</a></li>
+                    <li><a href="@Url.Action("Photo", "Image")">Фото</a></li>
+                    <li><a href="@Url.Action("Index", "Forum")">Форум</a></li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {<li><a href="@Url.Action("Login", "Account")">Вход</a></li>}
+                    else
+                    {
+                        var UserName = Session["User"] != null ? ((RifleRange.DAL.rrUser)Session["User"]).UserName : string.Empty;
+
+                        <li><a href="@Url.Action("ProfileEdit", "Account")">@UserName</a></li>
+                        <li><a href="@Url.Action("Logoff", "Account")">Выход</a></li> 
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <strong>2016 год</strong>
+        </footer>
+    </div>
+    @RenderSection("BottomScripts", required: false)
+</body>
+</html>

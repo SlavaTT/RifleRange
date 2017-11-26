@@ -1,0 +1,46 @@
+﻿@using RifleRange.Models
+@model NewsModel[]
+
+
+<h2>Новости Клуба</h2>
+@if (Model.Length > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].LastUpdate)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a href="@Url.Action("Details", "News", new { id = item.NewsId })">@item.Title</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+        </tr>
+        }
+    </table>
+}
+else
+{
+    <tr>
+        <th>
+            <br />
+            Нет новостей.
+        </th>
+    </tr>
+}
+
+

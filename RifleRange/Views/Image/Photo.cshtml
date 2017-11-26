@@ -1,0 +1,52 @@
+﻿@using System.Collections.Generic
+@using RifleRange.DAL
+@using RifleRange.Models
+@model ImageModel[]
+
+<h1>Фотогалерея</h1>
+<br />
+@section HeadScripts
+{
+    <link rel="stylesheet" href="~/Content/Blueimp/css/blueimp-gallery.min.css">
+}
+
+@if (Model.Length > 0)
+{
+    <div id="links">
+        @foreach (ImageModel Image in Model)
+        {
+            <a href="~/Files/Image/@Image.FileName" data-gallery>
+                <img src="~/Files/Image/Thumb/@Image.FileName" alt="@Image.Description" />
+            </a>
+        }
+    </div>
+}
+else
+{
+    <div>Нет изображений</div>
+}
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+@section BottomScripts
+{
+    <script src="~/Content/Blueimp/js/jquery.blueimp-gallery.min.js"></script>
+    <script type="text/javascript">
+        document.getElementById('links').onclick = function (event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = { index: link, event: event },
+                links = this.getElementsByTagName('a');
+            blueimp.Gallery(links, options);
+        };
+    </script>
+}
