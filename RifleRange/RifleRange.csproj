@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -555,64 +556,7 @@
     <Content Include="Content\images\P1050330.JPG" />
     <Content Include="Content\images\P1050331.JPG" />
     <Content Include="Content\js\Helper.js" />
-    <Content Include="Content\kendoUI\js\jszip.min.js" />
-    <Content Include="Content\kendoUI\js\kendo.all.min.js" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\editor.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\imagebrowser.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\indeterminate.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\loading-image.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\loading.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\loading_2x.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\markers.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\markers_2x.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\slider-h.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\slider-v.gif" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\sprite.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_2x.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_kpi.png" />
-    <Content Include="Content\kendoUI\styles\Bootstrap\sprite_kpi_2x.png" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\LICENSE.txt" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.svg" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.svg" />
-    <Content Include="Content\kendoUI\styles\images\back.png" />
-    <Content Include="Content\kendoUI\styles\images\kendoui.svg" />
-    <Content Include="Content\kendoUI\styles\images\wp8_icons.png" />
-    <Content Include="Content\kendoUI\styles\images\wp8_inverseicons.png" />
-    <Content Include="Content\kendoUI\styles\kendo.bootstrap.min.css" />
-    <Content Include="Content\kendoUI\styles\kendo.bootstrap.mobile.min.css" />
-    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.core.min.css" />
-    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.min.css" />
-    <Content Include="Content\kendoUI\styles\kendo.common.min.css" />
-    <Content Include="Content\kendoUI\styles\kendo.rtl.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\kendoUI\js\kendo.all.min.js.map" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-Bold.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSans.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSansMono.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\DejaVu\DejaVuSerif.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.eot" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\KendoUIGlyphs.woff" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.eot" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.ttf" />
-    <Content Include="Content\kendoUI\styles\fonts\glyphs\WebComponentsIcons.woff" />
-    <Content Include="Content\kendoUI\styles\images\kendoui.ttf" />
-    <Content Include="Content\kendoUI\styles\images\kendoui.woff" />
-    <Content Include="Content\kendoUI\styles\kendo.bootstrap.min.css.map" />
-    <Content Include="Content\kendoUI\styles\kendo.bootstrap.mobile.min.css.map" />
-    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.core.min.css.map" />
-    <Content Include="Content\kendoUI\styles\kendo.common-bootstrap.min.css.map" />
-    <Content Include="Content\kendoUI\styles\kendo.common.min.css.map" />
-    <Content Include="Content\kendoUI\styles\kendo.rtl.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -625,20 +569,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BaseController.cs" />
-    <Compile Include="App_Start\ModelFactory.cs" />
-    <Compile Include="App_Start\WebAPIConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\API\ForumController.cs" />
     <Compile Include="DAL\Forum.cs" />
     <Compile Include="DAL\ForumThread.cs" />
     <Compile Include="DAL\Image.cs" />
     <Compile Include="DAL\PhotoAlbum.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="Models\Api\ForumThread.cs" />
     <Compile Include="Models\ForumThread.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\News.cs" />
@@ -733,7 +672,6 @@
     <Content Include="Views\Forum\Edit.cshtml" />
     <Content Include="Views\Forum\Delete.cshtml" />
     <Content Include="Views\Forum\Details.cshtml" />
-    <Content Include="Views\Forum\DetailsTree.cshtml" />
     <None Include="Views\Shared\ShowAlbum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -745,6 +683,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\Image\Thumb\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

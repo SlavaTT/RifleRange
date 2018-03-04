@@ -8,7 +8,7 @@ using System.Web.Helpers;
 
 namespace RifleRange.Controllers
 {
-    public class ImageController : Controller
+    public class ImageController : BaseController
     {
         public ActionResult PhotoByAlbum()
         {

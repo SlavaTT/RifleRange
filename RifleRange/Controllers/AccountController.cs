@@ -8,7 +8,7 @@ using System.Web;
 
 namespace RifleRange.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public ActionResult Login()
         {
@@ -27,11 +27,11 @@ namespace RifleRange.Controllers
                 {
                     rrUser User = llUser.First.Value;
 
-                    Session["User"] = User;
+                    CurrentUser = User;
 
                     var AuthTicket = new FormsAuthenticationTicket(
-                        1,                           
-                        User.UserName,               
+                        1,
+                        User.UserId.ToString(),               
                         DateTime.Now,                
                         DateTime.Now.AddMinutes(20), 
                         false,                    
@@ -45,10 +45,8 @@ namespace RifleRange.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
-                }
+
+                ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
             }
 
             return View();
@@ -58,7 +56,6 @@ namespace RifleRange.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                rrUser CurrentUser = (rrUser)Session["User"];
                 if (CurrentUser != null) View(new RegisterModel(CurrentUser));
             }
             return View();
@@ -70,8 +67,6 @@ namespace RifleRange.Controllers
         {
             if (ModelState.IsValid)
             {
-                rrUser CurrentUser = (rrUser)Session["User"];
-               
                 if (!rrUserDB.CheckLoginExists(LoginName: Model.LoginName, ExceptUserId: CurrentUser.UserId))
                 {
                     // обновляем пользователя
@@ -81,13 +76,11 @@ namespace RifleRange.Controllers
 
                     FormsAuthentication.SignOut();
 
-                    FormsAuthentication.SetAuthCookie(Model.LoginName, false);
+                    FormsAuthentication.SetAuthCookie(CurrentUser.UserId.ToString(), false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
-                }
+
+                ModelState.AddModelError("", "Пользователь с таким логином уже существует");
             }
 
             return View(Model);
@@ -101,7 +94,7 @@ namespace RifleRange.Controllers
         public ActionResult Register(RegisterModel Model)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 if (!rrUserDB.CheckLoginExists(LoginName: Model.LoginName))
                 {
                     // создаем нового пользователя
@@ -111,11 +104,11 @@ namespace RifleRange.Controllers
                     LinkedList<rrUser> llUser = rrUserDB.GetUser(UserId: NewUserId);
                     rrUser User = llUser.First.Value;
 
-                    Session["User"] = User;
+                    CurrentUser = User;
 
                     var AuthTicket = new FormsAuthenticationTicket(
                         1,
-                        User.UserName,
+                        User.UserId.ToString(),
                         DateTime.Now,
                         DateTime.Now.AddMinutes(20),
                         false,
@@ -129,10 +122,8 @@ namespace RifleRange.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
-                }
+
+                ModelState.AddModelError("", "Пользователь с таким логином уже существует");
             }
 
             return View(Model);

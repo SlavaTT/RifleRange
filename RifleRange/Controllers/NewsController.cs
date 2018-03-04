@@ -8,7 +8,7 @@ using System;
 
 namespace RifleRange.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
         // GET: News
         public ActionResult Index()
@@ -26,8 +26,8 @@ namespace RifleRange.Controllers
 
             if (User.IsInRole("admin"))
                 return View("EditIndex", ModelArray);
-            else
-                return View("Index", ModelArray);
+
+            return View("Index", ModelArray);
         }
 
         // GET: News/Details/5
@@ -56,7 +56,7 @@ namespace RifleRange.Controllers
             string FileName = null;
             if (Model.File != null)
             {
-                FileName = string.Format("{0}_{1}", Guid.NewGuid().ToString(), Model.File.FileName);
+                FileName = $"{Guid.NewGuid().ToString()}_{Model.File.FileName}";
                 var FilePath = Server.MapPath(Path.Combine("~/Files", FileName));
                 Model.File.SaveAs(FilePath);
             }
@@ -88,13 +88,13 @@ namespace RifleRange.Controllers
 
             if (!string.IsNullOrEmpty(FileName) && (Model.DeleteFile || Model.File != null))
             {
-                string FilePath = Server.MapPath(string.Format("~/Files/{0}", FileName));
+                string FilePath = Server.MapPath($"~/Files/{FileName}");
                 System.IO.File.Delete(FilePath);
                 FileName = null;
             }
             if (Model.File != null && !Model.DeleteFile)
             {
-                FileName = string.Format("{0}_{1}", Guid.NewGuid().ToString(), Model.File.FileName);
+                FileName = $"{Guid.NewGuid().ToString()}_{Model.File.FileName}";
                 var FilePath = Server.MapPath(Path.Combine("~/Files", FileName));
                 Model.File.SaveAs(FilePath);
             }
@@ -121,7 +121,7 @@ namespace RifleRange.Controllers
             rrNews News = rrNewsDB.GetNews(id);
             if (!string.IsNullOrEmpty(News.FileName))
             {
-                string FilePath = Server.MapPath(string.Format("~/Files/{0}", News.FileName));
+                string FilePath = Server.MapPath($"~/Files/{News.FileName}");
                 System.IO.File.Delete(FilePath);
             }
             rrNewsDB.DeleteNews(NewsId: id);

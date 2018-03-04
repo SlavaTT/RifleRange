@@ -12,6 +12,7 @@ namespace RifleRange.Models
         public int ForumThreadId { get; set; }
 
         public bool IsTopThread { get; private set; }
+        public int? ThreadParentId { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [DisplayName("Тема")]
@@ -56,6 +57,7 @@ namespace RifleRange.Models
         public ForumThread(rrForumThread ForumThread)
         {
             ForumThreadId = ForumThread.ThreadId;
+            ThreadParentId = ForumThread.ThreadParentId;
             Title = ForumThread.Title;
             Description = ForumThread.Description;
             Description = Uri.EscapeDataString(ForumThread.Description);

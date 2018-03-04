@@ -17,6 +17,7 @@ namespace RifleRange.Models
     }
     public class RegisterModel
     {
+
         [Required(AllowEmptyStrings = false)]
         [DisplayName("Имя")]
         [StringLength(30, MinimumLength = 5)]
@@ -27,7 +28,7 @@ namespace RifleRange.Models
         [DisplayName("Фамилия")]
         public string LastName { get; set; }
 
-        public string UserName { get { return string.Format("{0}, {1}", FirstName, LastName); } }
+        public string UserName => $"{FirstName}, {LastName}";
 
         [StringLength(30)]
         [DisplayName("Email")]

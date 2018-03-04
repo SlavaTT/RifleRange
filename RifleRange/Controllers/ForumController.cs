@@ -7,7 +7,7 @@ using RifleRange.Models;
 
 namespace RifleRange.Controllers
 {
-    public class ForumController : Controller
+    public class ForumController : BaseController
     {
         // GET: Forum
         public ActionResult Index()
@@ -47,18 +47,9 @@ namespace RifleRange.Controllers
 
             return View(arrModel);
         }
-        public ActionResult DetailsTree(int Id)
-        {
-            ViewData["DataUrl"] = "/api/forum";
-            ViewData["TopThreadId"] = Id;
-            if (User.Identity.IsAuthenticated && Session["User"] != null)
-                ViewData["UserId"] = ((rrUser)Session["User"]).UserId;
-
-            return View();
-        }
         // GET: Forum/Create
         [Authorize]
-        public ActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
@@ -77,9 +68,7 @@ namespace RifleRange.Controllers
             }
             string Description = Uri.UnescapeDataString(Model.Description);
 
-            rrUser User = (rrUser)Session["User"];
-
-            rrForumThreadDB.InsertForumThread(ForumId: rrForumThreadDB.ForumId, UserId: User.UserId,
+            rrForumThreadDB.InsertForumThread(ForumId: rrForumThreadDB.ForumId, UserId: CurrentUser.UserId,
                 Title: Model.Title, Description: Description, ThreadParentId: null, FileName: FileName);
 
             return RedirectToAction("Index");
@@ -130,23 +119,21 @@ namespace RifleRange.Controllers
                 var FilePath = Server.MapPath(Path.Combine("~/Files", FileName));
                 Model.File.SaveAs(FilePath);
             }
-            rrUser User = (rrUser)Session["User"];
-
-            if (ForumThread.CreatedBy != User.UserId)
+            if (ForumThread.CreatedBy != CurrentUser.UserId)
             {
                 ViewData["ErrorMessage"] = "Нельзя редактировать сообщения созданные другими пользователями";
                 return View("Error");
             }
 
-            string Title = User.UserId != ForumThread.CreatedBy ? ForumThread.Title : Model.Title;
+            string Title = CurrentUser.UserId != ForumThread.CreatedBy ? ForumThread.Title : Model.Title;
             string Description = Uri.UnescapeDataString(Model.Description);
 
 
             rrForumThreadDB.UpdateForumThread(ForumId: rrForumThreadDB.ForumId,
-                UserId: User.UserId, ThreadId: ForumThread.ThreadId, Title: Model.Title,
+                UserId: CurrentUser.UserId, ThreadId: ForumThread.ThreadId, Title: Model.Title,
                 Description: Description, FileName: FileName);
 
-            return RedirectToAction("Index");
+            return ForumRedirect(ForumThread.ThreadParentId);
         }
         public ActionResult GetServerDate()
         {
@@ -156,8 +143,6 @@ namespace RifleRange.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
-            rrUser User = (rrUser)Session["User"];
-
             LinkedList<rrForumThread> llThread = rrForumThreadDB.GetForumThread(
                 ForumId: rrForumThreadDB.ForumId,
                 ThreadId: id);
@@ -176,8 +161,6 @@ namespace RifleRange.Controllers
         [HttpPost]
         public ActionResult DeleteIt(int id)
         {
-            rrUser User = (rrUser)Session["User"];
-
             LinkedList<rrForumThread> llThread = rrForumThreadDB.GetForumThread(
                 ForumId: rrForumThreadDB.ForumId,
                 ThreadId: id);
@@ -189,7 +172,7 @@ namespace RifleRange.Controllers
 
             rrForumThread ForumThread = llThread.First.Value;
 
-            if (ForumThread.CreatedBy != User.UserId)
+            if (ForumThread.CreatedBy != CurrentUser.UserId)
             {
                 ViewData["ErrorMessage"] = "Нельзя удалить сообщение созданное другим пользователем";
                 return View("Error");
@@ -204,7 +187,7 @@ namespace RifleRange.Controllers
                 ForumId: rrForumThreadDB.ForumId,
                 ThreadId: id);
 
-            return RedirectToAction("Index");
+            return ForumRedirect(ForumThread.ThreadParentId);
         }
         [Authorize]
         [HttpPost]
@@ -246,6 +229,18 @@ namespace RifleRange.Controllers
             }
 
             return View("Details", arrModel);
+        }
+
+        private ActionResult ForumRedirect(int? ThreadParentId)
+        {
+            ActionResult result;
+
+            if (ThreadParentId != null)
+                result = RedirectToAction("Details", new { id = ThreadParentId });
+            else
+                result = RedirectToAction("Index");
+
+            return result;
         }
     }
 }

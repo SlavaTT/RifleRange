@@ -6,7 +6,7 @@ using RifleRange.Models;
 
 namespace RifleRange.Controllers
 {
-    public class ServiceController : Controller
+    public class ServiceController : BaseController
     {
         public ActionResult Error()
         {
